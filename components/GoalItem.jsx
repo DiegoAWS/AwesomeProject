@@ -18,9 +18,12 @@ const styles = StyleSheet.create({
         borderWidth: 1,
         borderColor: 'black',
         marginBottom: 10,
+        borderWidth: 1,
+        borderColor: 'purple',
+        
     },
     goalText: {
         fontWeight: 'bold',
-
+        color: 'purple',
     }
 })

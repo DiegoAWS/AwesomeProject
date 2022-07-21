@@ -1,5 +1,6 @@
+import { StatusBar } from 'expo-status-bar';
 import { useState } from 'react';
-import { StyleSheet, View } from 'react-native';
+import { Button, StyleSheet, View } from 'react-native';
 import DataInput from './components/DataInput';
 import GoalList from './components/GoalList';
 
@@ -7,7 +8,7 @@ import GoalList from './components/GoalList';
 export default function App() {
 
 
-
+  const [showAddGoal, setShowAddGoal] = useState(false)
   const [goals, setGoals] = useState([])
 
   const addGoal = (goal) => {
@@ -24,12 +25,22 @@ export default function App() {
     });
   }
 
+  const hideModal = () => {
+    setShowAddGoal(false)
+  }
+
 
   return (
-    <View style={styles.appContainer}>
-      <DataInput onAddGoal={addGoal} />
-      <GoalList goals={goals} deleteGoal={deleteGoal}/>
-    </View>
+    <>
+      <StatusBar />
+
+      <View style={styles.appContainer}>
+        <Button title="Add New Goal" color={"purple"} onPress={() => { setShowAddGoal(true) }} />
+        <DataInput onAddGoal={addGoal} showAddGoal={showAddGoal} hideModal={hideModal} />
+        <GoalList goals={goals} deleteGoal={deleteGoal} />
+
+      </View>
+    </>
   );
 }
 
@@ -38,6 +49,7 @@ const styles = StyleSheet.create({
     paddingTop: 50,
     paddingHorizontal: 20,
     flex: 1,
+    backgroundColor: 'black',
   },
 
 });
