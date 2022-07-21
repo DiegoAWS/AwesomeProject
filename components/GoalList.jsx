@@ -1,8 +1,8 @@
-import { FlatList, StyleSheet, Text, View } from 'react-native'
+import { FlatList, Pressable, StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 import GoalItem from './GoalItem'
 
-const GoalList = ({goals}) => {
+const GoalList = ({ goals, deleteGoal }) => {
     return (
         <View style={styles.goalContainer}>
             {goals.length === 0
@@ -10,7 +10,16 @@ const GoalList = ({goals}) => {
                 : <FlatList
                     alwaysBounceVertical={false}
                     data={goals}
-                    renderItem={({ item }) =>  (<GoalItem text={item.goal} />)}
+                    renderItem={({ item }) => (
+                        <Pressable
+                            android_ripple={{ color: 'red' }}
+                            onPress={() => deleteGoal(item.key)}
+                            style={({ pressed }) => 
+                            pressed && styles.pressedlabel}
+                        >
+                            <GoalItem text={item.goal} deleteGoal={deleteGoal} />
+                        </Pressable>
+                    )}
                 />
             }
         </View>
@@ -29,5 +38,8 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         textAlign: 'center',
     },
+    pressedlabel: {
+        backgroundColor: 'red'
+    }
 
 })
