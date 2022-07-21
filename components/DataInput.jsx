@@ -72,7 +72,7 @@ const styles = StyleSheet.create({
         paddingTop: 10,
     },
     image: {
-        width: '90%',
+        width: '30%',
         resizeMode: 'contain',
 
     }
