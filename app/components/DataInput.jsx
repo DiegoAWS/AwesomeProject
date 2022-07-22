@@ -17,29 +17,32 @@ const DataInput = ({ onAddGoal, showAddGoal, hideModal }) => {
         <Modal
             visible={showAddGoal}
             animationType='slide'
-        >
-            <View
-                style={styles.inputContainer}>
-                    <Image source={AddGoalImg} style={styles.image}/>
-                <TextInput
-                    style={styles.textInput}
-                    placeholder='Your goal'
-                    value={goal}
-                    onChangeText={setGoal}
-                />
-                <View style={styles.buttonsRow}>
-                    <Button
-                        disabled={!goal}
-                        onPress={handleAddGoal}
-                        color='purple'
-                        title='Add goal' />
-                    <Button
-                        title='Cancel'
-                        color='red'
-                        onPress={hideModal}
-                    />
-                </View>
+            transparent={true}
 
+        >
+            <View style={styles.modalContainer}>
+                <View
+                    style={styles.inputContainer}>
+                    <Image source={AddGoalImg} style={styles.image} />
+                    <TextInput
+                        style={styles.textInput}
+                        placeholder='Your goal'
+                        value={goal}
+                        onChangeText={setGoal}
+                    />
+                    <View style={styles.buttonsRow}>
+                        <Button
+                            disabled={!goal}
+                            onPress={handleAddGoal}
+                            color='purple'
+                            title='Add goal' />
+                        <Button
+                            title='Cancel'
+                            color='red'
+                            onPress={hideModal}
+                        />
+                    </View>
+                </View>
             </View>
         </Modal>
     )
@@ -48,12 +51,22 @@ const DataInput = ({ onAddGoal, showAddGoal, hideModal }) => {
 export default DataInput
 
 const styles = StyleSheet.create({
+    modalContainer: {
+        flex: 1,
+        justifyContent: 'flex-end',
+        flexDirection: 'column',
+    },
     inputContainer: {
         justifyContent: 'flex-start',
         alignItems: 'center',
         paddingBottom: 24,
-        flex: 1,
-        backgroundColor: 'black',
+        borderTopLeftRadius: 20,
+        borderTopRightRadius: 20,
+        backgroundColor: 'white',
+        shadowColor: 'black',
+        shadowOffset: { width: 0, height: 2 },
+        shadowRadius: 6,
+        shadowOpacity: 0.76,
     },
     textInput: {
         width: '80%',
