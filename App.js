@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
-import Goals from './app/screens/Goals';
+import LoginScreen from './app/screens/LoginScreen';
 
 
 export default function App() {
@@ -8,7 +8,7 @@ export default function App() {
   return (
     <>
       <StatusBar style='auto' />
-   
+      <LoginScreen />
     </>
   );
 }
