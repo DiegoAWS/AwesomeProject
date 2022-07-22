@@ -1,9 +1,8 @@
 import { StatusBar } from 'expo-status-bar';
 import { useState } from 'react';
-import { Button, StyleSheet, View } from 'react-native';
-import DataInput from './components/DataInput';
-import GoalList from './components/GoalList';
-
+import { Button, StyleSheet, View, Image } from 'react-native';
+import DataInput from './app/components/DataInput';
+import GoalList from './app/components/GoalList';
 
 export default function App() {
 
@@ -29,12 +28,18 @@ export default function App() {
     setShowAddGoal(false)
   }
 
-
   return (
     <>
-      <StatusBar />
+      <StatusBar style='light' />
 
       <View style={styles.appContainer}>
+        <Image
+          // blurRadius={10}
+          fadeDuration={3000}
+          source={{
+            uri: "https://picsum.photos/200/300"
+          }} style={styles.headerImage} />
+
         <Button title="Add New Goal" color={"purple"} onPress={() => { setShowAddGoal(true) }} />
         <DataInput onAddGoal={addGoal} showAddGoal={showAddGoal} hideModal={hideModal} />
         <GoalList goals={goals} deleteGoal={deleteGoal} />
@@ -51,5 +56,9 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: 'black',
   },
+  headerImage: {
+    marginBottom: 20,
+    height: 200,
+  }
 
 });

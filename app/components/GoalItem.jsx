@@ -4,7 +4,7 @@ import React from 'react'
 const GoalItem = ({ text }) => {
     return (
         <View style={styles.goal}>
-            <Text style={styles.goalText}>{text}</Text>
+            <Text numberOfLines={3} style={styles.goalText}>{text}</Text>
         </View>
     )
 }
